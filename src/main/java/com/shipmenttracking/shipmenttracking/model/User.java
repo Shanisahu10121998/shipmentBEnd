@@ -1,0 +1,73 @@
+package com.shipmenttracking.shipmenttracking.model;
+
+import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import javax.persistence.*;
+import java.util.Collection;
+
+@Data
+@Entity
+@Table(name="USER")
+public class User implements UserDetails {
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
+
+    enum role{
+        USER,ADMIN
+    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    @Column(name = "first_name",length = 100,nullable = false)
+    private String firstName;
+    @Column(name = "last_name",length = 100,nullable = false)
+    private String lastName;
+    @Column(name = "contact_number",length = 10,nullable = false)
+    private String contactNumber;
+    @Column(name = "email",nullable = false,unique = true)
+    private String email;
+    @Column(name = "address",nullable = false)
+    private String address;
+    @Column(name = "password",nullable = false,length = 40)
+    private String password;
+
+    @ManyToOne(cascade= CascadeType.ALL)
+    @JoinColumn(name = "role_id_fd")
+    private Role role;
+
+
+
+
+}
