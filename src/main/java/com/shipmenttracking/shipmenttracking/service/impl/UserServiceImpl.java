@@ -1,5 +1,7 @@
 package com.shipmenttracking.shipmenttracking.service.impl;
 
+import com.shipmenttracking.shipmenttracking.model.Role;
+import com.shipmenttracking.shipmenttracking.repo.IRoleRepo;
 import com.shipmenttracking.shipmenttracking.repo.IUserRepo;
 import com.shipmenttracking.shipmenttracking.exception.BusinessException;
 import com.shipmenttracking.shipmenttracking.wrapper.UserWrapper;
@@ -13,14 +15,24 @@ import com.shipmenttracking.shipmenttracking.service.IUserService;
 @Slf4j
 public class UserServiceImpl implements IUserService {
    @Autowired
-   IUserRepo userRepo;
+    IUserRepo userRepo;
     @Autowired
     UserWrapper userWrapper;
+    @Autowired
+    private IRoleRepo roleRepo;
+
+
+
     @Override
 
     public User userRegistration(User user) throws Exception{
         log.info("inside method userRegistration : {}", user);
         try {
+        // apply null validation and vaild Role name
+          Role dbRole = roleRepo.getRoleByName(user.getRole().getRoleName());
+            log.info("inside method userRegistration dbRole: {}", dbRole);
+           //update existing role with user object
+            user.setRole(dbRole);
             return userRepo.save(user);
         } catch (Exception e) {
             log.error("inside catch block", e.getMessage());
