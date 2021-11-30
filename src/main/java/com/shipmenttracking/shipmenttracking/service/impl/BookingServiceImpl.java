@@ -1,6 +1,7 @@
 package com.shipmenttracking.shipmenttracking.service.impl;
 
 import com.shipmenttracking.shipmenttracking.dao.BookingDao;
+import com.shipmenttracking.shipmenttracking.wrapper.BookingWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.shipmenttracking.shipmenttracking.model.Booking;
@@ -14,14 +15,19 @@ public class BookingServiceImpl implements IBookingService {
     @Autowired
     private BookingDao bookingDao;
 
+    @Autowired
+    private BookingWrapper bookingWrapperObj;
+
     @Override
-    public Booking createBooking(Booking booking) {
-        booking.setStatus(String.valueOf(Booking.Status.BOOKED));
+    public BookingWrapper createBooking(BookingWrapper bookingWrapper) {
+        bookingWrapper.setStatus(String.valueOf(Booking.Status.BOOKED));
         String trackingId = null;
         trackingId  ="trackingId";
         trackingId = isTrackingIdPresent(trackingId);
-        booking.setTrackingId(trackingId);
-        return bookingDao.createBooking(booking);
+        bookingWrapper.setTrackingId(trackingId);
+        Booking booking = bookingWrapperObj.convertWrapperToModel(bookingWrapper);
+        Booking booking1 = bookingDao.createBooking(booking);
+        return bookingWrapper.convertModelToWrapper(booking1);
     }
 
     @Override
@@ -31,7 +37,7 @@ public class BookingServiceImpl implements IBookingService {
         booking1.setReceiverEmailId(booking.getReceiverEmailId());
         booking1.setReceiverName(booking.getReceiverName());
         booking1.setReceiverMobileNumber(booking.getReceiverMobileNumber());
-        
+
 
         return bookingDao.createBooking(booking1);
     }

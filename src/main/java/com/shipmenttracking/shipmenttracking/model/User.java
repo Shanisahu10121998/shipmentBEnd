@@ -44,9 +44,6 @@ public class User implements UserDetails {
         return false;
     }
 
-    enum role{
-        USER,ADMIN
-    }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;

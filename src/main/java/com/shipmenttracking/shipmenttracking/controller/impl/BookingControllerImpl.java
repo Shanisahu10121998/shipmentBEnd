@@ -2,6 +2,7 @@ package com.shipmenttracking.shipmenttracking.controller.impl;
 
 import com.shipmenttracking.shipmenttracking.controller.IBookingController;
 import com.shipmenttracking.shipmenttracking.service.IBookingService;
+import com.shipmenttracking.shipmenttracking.wrapper.BookingWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import com.shipmenttracking.shipmenttracking.model.Booking;
@@ -12,8 +13,8 @@ public class BookingControllerImpl implements IBookingController {
     private IBookingService bookingService;
 
     @Override
-    public Booking createBooking(Booking booking) {
-        return bookingService.createBooking(booking);
+    public BookingWrapper createBooking(BookingWrapper bookingWrapper) {
+        return bookingService.createBooking(bookingWrapper);
     }
 
     @Override

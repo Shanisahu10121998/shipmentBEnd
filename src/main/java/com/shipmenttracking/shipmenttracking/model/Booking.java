@@ -64,5 +64,6 @@ public class Booking
     private int receiverPinCode;
     @Column(name = "status",nullable = true)
     private String Status;
+    private String Priority;
 
 }
