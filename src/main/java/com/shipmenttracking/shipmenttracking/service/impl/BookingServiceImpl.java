@@ -37,9 +37,9 @@ public class BookingServiceImpl implements IBookingService {
     }
 
     @Override
-    public Booking getBookingInformationByTrackingId(Integer id) {
+    public Booking getBookingInformationByTrackingId(String trackingId) {
 
-        return bookingDao.getBookingInformationByTrackingId(id);
+        return bookingDao.getBookingInformationByTrackingId(trackingId);
     }
 
     private String generateUniqueId(){

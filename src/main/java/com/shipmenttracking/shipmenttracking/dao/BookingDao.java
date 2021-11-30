@@ -20,8 +20,8 @@ public class BookingDao {
         return bookingRepo.checkTrackingId(trackingId);
     }
 
-        public Booking getBookingInformationByTrackingId(Integer id){
-        Booking booking=bookingRepo.findById(id).get();
+        public Booking getBookingInformationByTrackingId(String trackingId){
+        Booking booking=bookingRepo.checkTrackingId(trackingId);
 
         return booking;
     }
