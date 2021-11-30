@@ -22,11 +22,11 @@ public class UserControllerImpl implements IUserController {
     public User userRegistration(User user) throws Exception {
         log.info("inside method userRegistration ");
         try{
-        return userService.userRegistration(user);
-        }catch (Exception ex){
+            return userService.userRegistration(user);
+        }
+        catch (Exception ex){
             log.error("inside catch block",ex.getMessage());
             throw new Exception(ex.getMessage());
-
         }
     }
 
