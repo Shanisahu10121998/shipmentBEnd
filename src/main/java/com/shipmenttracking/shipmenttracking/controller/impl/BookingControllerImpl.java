@@ -23,7 +23,7 @@ public class BookingControllerImpl implements IBookingController {
     }
 
     @Override
-    public Booking getBookingInformationByTrackingId(Integer id) {
-        return bookingService.getBookingInformationByTrackingId(id);
+    public Booking getBookingInformationByTrackingId(String trackingId) {
+        return bookingService.getBookingInformationByTrackingId(trackingId);
     }
 }

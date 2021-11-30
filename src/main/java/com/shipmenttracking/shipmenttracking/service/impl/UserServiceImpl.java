@@ -28,10 +28,14 @@ public class UserServiceImpl implements IUserService {
     public User userRegistration(User user) throws Exception{
         log.info("inside method userRegistration : {}", user);
         try {
-        // apply null validation and vaild Role name
+        // apply null validation and vallid Role name
           Role dbRole = roleRepo.getRoleByName(user.getRole().getRoleName());
             log.info("inside method userRegistration dbRole: {}", dbRole);
-           //update existing role with user object
+          if(dbRole==null){
+              throw new BusinessException("Role not found");
+          }
+
+         //  update existing role with user object
             user.setRole(dbRole);
             return userRepo.save(user);
         } catch (Exception e) {

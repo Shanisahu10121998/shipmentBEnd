@@ -2,6 +2,7 @@ package com.shipmenttracking.shipmenttracking.model;
 
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,5 +13,6 @@ public class Role {
     @GeneratedValue
     @Id
     private int id;
+
     private String roleName;
 }
