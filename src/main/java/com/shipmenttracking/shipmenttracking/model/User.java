@@ -54,7 +54,7 @@ public class User implements UserDetails {
     private String firstName;
     @Column(name = "last_name",length = 100,nullable = false)
     private String lastName;
-    @Column(name = "contact_number",length = 10,nullable = false)
+    @Column(name = "contact_number",length = 15,nullable = false)
     private String contactNumber;
     @Column(name = "email",nullable = false,unique = true)
     private String email;
