@@ -1,5 +1,6 @@
 package com.shipmenttracking.shipmenttracking.service.impl;
 
+import com.shipmenttracking.shipmenttracking.dao.UserDao;
 import com.shipmenttracking.shipmenttracking.model.Role;
 import com.shipmenttracking.shipmenttracking.repo.IRoleRepo;
 import com.shipmenttracking.shipmenttracking.repo.IUserRepo;
@@ -15,29 +16,25 @@ import com.shipmenttracking.shipmenttracking.service.IUserService;
 @Slf4j
 public class UserServiceImpl implements IUserService {
    @Autowired
-    IUserRepo userRepo;
+   UserDao userDao;
     @Autowired
     UserWrapper userWrapper;
-    @Autowired
-    private IRoleRepo roleRepo;
 
 
 
     @Override
-
     public User userRegistration(User user) throws Exception{
         log.info("inside method userRegistration : {}", user);
+        Role role = new Role();
+        role.setId(2);
+        role.setRoleName("User");
+        user.setRole(role);
         try {
-        // apply null validation and vallid Role name
-          Role dbRole = roleRepo.getRoleByName(user.getRole().getRoleName());
-            log.info("inside method userRegistration dbRole: {}", dbRole);
-          if(dbRole==null){
-              throw new BusinessException("Role not found");
-          }
-
-         //  update existing role with user object
-            user.setRole(dbRole);
-            return userRepo.save(user);
+           User user1=userDao.getUserByUsername(user.getUsername());
+           if(user1!=null){
+               throw new BusinessException("user with this mail already exist");
+           }
+            return userDao.userRegistration(user);
         } catch (Exception e) {
             log.error("inside catch block", e.getMessage());
             throw new BusinessException(e.getMessage());
@@ -47,7 +44,7 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public UserWrapper getProfile(Integer id) {
-        User user = userRepo.findById(id).get();
+        User user = userDao.getProfile(id);
         UserWrapper userWrapperObj = userWrapper.convertModelToWrapper(user);
         return userWrapperObj;
     }

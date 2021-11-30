@@ -25,7 +25,7 @@ public class BookingServiceImpl implements IBookingService {
     }
 
     @Override
-    public Booking editShipment(Booking booking) {
+    public Booking  editShipment(Booking booking) {
         Booking booking1 = bookingDao.getBookingById(booking.getBookingId());
         booking1.setReceiverCityName(booking.getReceiverCityName());
         booking1.setReceiverEmailId(booking.getReceiverEmailId());

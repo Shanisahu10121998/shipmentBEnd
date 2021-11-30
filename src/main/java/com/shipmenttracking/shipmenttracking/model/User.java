@@ -63,7 +63,7 @@ public class User implements UserDetails {
     @Column(name = "password",nullable = false,length = 40)
     private String password;
 
-    @ManyToOne(cascade= CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.MERGE},fetch= FetchType.EAGER)
     @JoinColumn(name = "role_id_fd")
     private Role role;
 
