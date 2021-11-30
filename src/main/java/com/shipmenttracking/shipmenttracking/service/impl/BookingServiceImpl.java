@@ -31,7 +31,7 @@ public class BookingServiceImpl implements IBookingService {
         booking1.setReceiverEmailId(booking.getReceiverEmailId());
         booking1.setReceiverName(booking.getReceiverName());
         booking1.setReceiverMobileNumber(booking.getReceiverMobileNumber());
-        booking1.setReceiverStateName(booking.getReceiverStateName());
+        
 
         return bookingDao.createBooking(booking1);
     }

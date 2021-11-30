@@ -30,9 +30,9 @@ public class Booking
     private Date date;
     @Column(name = "tracking_id")
     private String trackingId;
-    @Column(name = "status_comment")
+    @Column(name = "status_comment",nullable = true)
     private String statusComment;
-    @Column(name = "user_instruction")
+    @Column(name = "user_instruction",nullable = true)
     private String userInstruction;
 
     @ManyToOne(cascade= CascadeType.ALL)
@@ -40,37 +40,29 @@ public class Booking
     private User user;
 
     //sender
-    @Column(name = "sender_name")
+    @Column(name = "sender_name",nullable = false)
     private String senderName;
-    @Column(name = "sender_mobile_number",length = 50)
+    @Column(name = "sender_mobile_number",length = 15)
     private String senderMobileNumber;
-    @Column(name = "sender_email_id",unique = true)
+    @Column(name = "sender_email_id",nullable = false)
     private String senderEmailId;
-    @Column(name = "sender_country_name")
-    private String senderCountryName;
-    @Column(name = "sender_state_name")
-    private String senderStateName;
-    @Column(name = "sender_city_name")
+    @Column(name = "sender_city_name",nullable = false)
     private String senderCityName;
-    @Column(name = "sender_pin_code")
+    @Column(name = "sender_pin_code",nullable = false)
     private int senderPinCode;
 
     //receiver
-    @Column(name = "receiver_name")
+    @Column(name = "receiver_name",nullable = false)
     private String receiverName;
-    @Column(name = "receiver_mobile_number")
+    @Column(name = "receiver_mobile_number",nullable = false,length = 15)
     private String receiverMobileNumber;
-    @Column(name = "receiver_email_id")
+    @Column(name = "receiver_email_id",nullable = false)
     private String receiverEmailId;
-    @Column(name = "receiver_country_name")
-    private String receiverCountryName;
-    @Column(name = "receiver_state_name")
-    private String receiverStateName;
-    @Column(name = "receiver_city_name")
+    @Column(name = "receiver_city_name",nullable = false)
     private String receiverCityName;
-    @Column(name = "receiver_pin_code")
+    @Column(name = "receiver_pin_code",nullable = false)
     private int receiverPinCode;
-    @Column(name = "status")
+    @Column(name = "status",nullable = true)
     private String Status;
 
 }
