@@ -6,6 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -38,6 +39,9 @@ public class Booking
     @ManyToOne(cascade= CascadeType.ALL)
     @JoinColumn(name = "USer_id_fk")
     private User user;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "booking_id_fk")
+    private List<ShipmentPackage> shipmentPackage;
 
     //sender
     @Column(name = "sender_name",nullable = false)
