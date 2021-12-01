@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import com.shipmenttracking.shipmenttracking.model.Booking;
 
+import java.util.List;
+
 @RestController
 public class BookingControllerImpl implements IBookingController {
     @Autowired
@@ -26,5 +28,15 @@ public class BookingControllerImpl implements IBookingController {
     @Override
     public Booking getBookingInformationByTrackingId(String trackingId) {
         return bookingService.getBookingInformationByTrackingId(trackingId);
+    }
+
+    @Override
+    public List<BookingWrapper> getAllBookingInfo() {
+        return bookingService.getAllBookingInfo();
+    }
+
+    @Override
+    public void deleteBookingById(Integer bookingId) {
+        bookingService.deleteBookingById(bookingId);
     }
 }

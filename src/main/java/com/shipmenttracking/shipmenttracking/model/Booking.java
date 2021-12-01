@@ -28,7 +28,7 @@ public class Booking
     private int bookingId;
     @CreationTimestamp
     @Column(name = "date")
-    private Date date;
+    private Date bookingDate;
     @Column(name = "tracking_id")
     private String trackingId;
     @Column(name = "status_comment",nullable = true)

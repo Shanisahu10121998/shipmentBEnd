@@ -1,6 +1,7 @@
 package com.shipmenttracking.shipmenttracking.service.impl;
 
 import com.shipmenttracking.shipmenttracking.dao.BookingDao;
+import com.shipmenttracking.shipmenttracking.exception.BusinessException;
 import com.shipmenttracking.shipmenttracking.wrapper.BookingWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,7 +9,10 @@ import com.shipmenttracking.shipmenttracking.model.Booking;
 import com.shipmenttracking.shipmenttracking.repo.IBookingRepo;
 import com.shipmenttracking.shipmenttracking.service.IBookingService;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 @Service
 public class BookingServiceImpl implements IBookingService {
@@ -45,7 +49,27 @@ public class BookingServiceImpl implements IBookingService {
     @Override
     public Booking getBookingInformationByTrackingId(String trackingId) {
 
-        return bookingDao.getBookingInformationByTrackingId(trackingId);
+        Booking booking = bookingDao.getBookingInformationByTrackingId(trackingId);
+        if(booking==null){
+            throw new BusinessException("Booking not fount with "+trackingId+" tracking Id");
+        }
+        return booking;
+    }
+
+    @Override
+    public List<BookingWrapper> getAllBookingInfo() {
+        List<Booking> bookingList=bookingDao.getAllBookingInfo();
+        List<BookingWrapper> bookingWrappers = new ArrayList<>();
+        bookingWrappers = bookingList.stream().map(booking->{
+           return  bookingWrapperObj.convertModelToWrapper(booking);
+        }).collect(Collectors.toList());
+        return bookingWrappers;
+    }
+
+    @Override
+    public void deleteBookingById(Integer id) {
+
+        bookingDao.deleteBookingById(id);
     }
 
     private String generateUniqueId(){

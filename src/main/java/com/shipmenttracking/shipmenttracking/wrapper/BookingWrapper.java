@@ -5,6 +5,8 @@ import com.shipmenttracking.shipmenttracking.model.User;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 @Component
 @Data
 public class BookingWrapper {
@@ -15,6 +17,7 @@ public class BookingWrapper {
     private String senderCityName;
     private int senderPinCode;
     private String userInstruction;
+    private Date bookingDate;
 
     private String receiverName;
     private String receiverMobileNumber;
@@ -36,6 +39,7 @@ public class BookingWrapper {
         bookingWrapper.setSenderPinCode(booking.getSenderPinCode());
         bookingWrapper.setUserInstruction(booking.getUserInstruction());
         bookingWrapper.setTrackingId(booking.getTrackingId());
+        bookingWrapper.setBookingDate(booking.getBookingDate());
 
         bookingWrapper.setReceiverName(booking.getReceiverName());
         bookingWrapper.setReceiverMobileNumber(booking.getReceiverMobileNumber());
@@ -57,6 +61,7 @@ public class BookingWrapper {
         booking.setSenderPinCode(bookingWrapper.getSenderPinCode());
         booking.setUserInstruction(bookingWrapper.getUserInstruction());
         booking.setTrackingId(bookingWrapper.getTrackingId());
+        booking.setBookingDate(bookingWrapper.bookingDate);
 
         booking.setReceiverName(bookingWrapper.getReceiverName());
         booking.setReceiverMobileNumber(bookingWrapper.getReceiverMobileNumber());
