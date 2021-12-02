@@ -58,7 +58,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter{
 			.cors()
 			.disable()
 			.authorizeRequests()
-			.antMatchers("/generate-token","/booking/deleteBookingById","/booking/getAllBookingInfo","/registration/getProfile","/booking/create","/booking/getTracking","/getTracking","/registration/register").permitAll()
+			.antMatchers("/generate-token","/booking/delete","/booking/getAllBookingInfo","/registration/getProfile","/booking/create","/booking/getTracking","/registration/register").permitAll()
 			.antMatchers(HttpMethod.OPTIONS).permitAll()
 			.anyRequest().authenticated()
 			.and()

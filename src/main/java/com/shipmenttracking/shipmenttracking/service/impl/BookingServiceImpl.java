@@ -3,6 +3,7 @@ package com.shipmenttracking.shipmenttracking.service.impl;
 import com.shipmenttracking.shipmenttracking.dao.BookingDao;
 import com.shipmenttracking.shipmenttracking.exception.BusinessException;
 import com.shipmenttracking.shipmenttracking.wrapper.BookingWrapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.shipmenttracking.shipmenttracking.model.Booking;
@@ -15,6 +16,7 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class BookingServiceImpl implements IBookingService {
     @Autowired
     private BookingDao bookingDao;
@@ -48,12 +50,17 @@ public class BookingServiceImpl implements IBookingService {
 
     @Override
     public Booking getBookingInformationByTrackingId(String trackingId) {
-
-        Booking booking = bookingDao.getBookingInformationByTrackingId(trackingId);
-        if(booking==null){
-            throw new BusinessException("Booking not fount with "+trackingId+" tracking Id");
+        try {
+            Booking booking = bookingDao.getBookingInformationByTrackingId(trackingId);
+            log.info("inside service: {}",booking);
+            if (booking == null) {
+                throw new BusinessException("Booking not fount with " + trackingId + " tracking Id");
+            }
+            return booking;
+        } catch (Exception ex) {
+            log.info("inside service: {}",ex);
+            throw new BusinessException(ex.getMessage());
         }
-        return booking;
     }
 
     @Override

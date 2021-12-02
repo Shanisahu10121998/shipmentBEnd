@@ -27,6 +27,8 @@ public class BookingWrapper {
     private String Status;
     private String Priority;
     private String trackingId;
+    private String Type;
+    private String Category;
 
 
     public BookingWrapper convertModelToWrapper(Booking booking){
@@ -48,6 +50,9 @@ public class BookingWrapper {
         bookingWrapper.setReceiverPinCode(booking.getReceiverPinCode());
         bookingWrapper.setStatus(booking.getStatus());
         bookingWrapper.setPriority(booking.getPriority());
+        bookingWrapper.setType(booking.getType());
+        bookingWrapper.setCategory(booking.getCategory());
+
         return bookingWrapper;
 
     }
@@ -70,6 +75,9 @@ public class BookingWrapper {
         booking.setReceiverCityName(bookingWrapper.getReceiverCityName());
         booking.setStatus(bookingWrapper.getStatus());
         booking.setPriority(bookingWrapper.getPriority());
+        booking.setType(bookingWrapper.getType());
+        booking.setCategory(bookingWrapper.getCategory());
+
         return booking;
     }
 

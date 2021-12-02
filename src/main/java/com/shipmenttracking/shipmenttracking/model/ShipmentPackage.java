@@ -8,13 +8,6 @@ import javax.persistence.*;
 @Table(name = "SHIPMENT_PACKAGE")
 public class ShipmentPackage {
 
-    enum type{
-        BUSINESS,PERSONAL;
-    }
-    enum category{
-        ELECTRONICS,MEDICAL, HOUSEHOLD,DOCUMENT,VEHICLE,LARGE_CARGO;
-    }
-
     @Id
     @Column(name = "shipment_package_id_pk")
     @GeneratedValue(strategy = GenerationType.AUTO)
