@@ -12,6 +12,7 @@ import java.util.Date;
 public class BookingWrapper {
     private int bookingId;
     private String senderName;
+    private String senderAddress;
     private String senderMobileNumber;
     private String senderEmailId;
     private String senderCityName;
@@ -20,6 +21,7 @@ public class BookingWrapper {
     private Date bookingDate;
 
     private String receiverName;
+    private String receiverAddress;
     private String receiverMobileNumber;
     private String receiverEmailId;
     private String receiverCityName;
@@ -35,6 +37,7 @@ public class BookingWrapper {
         BookingWrapper bookingWrapper = new BookingWrapper();
         bookingWrapper.setBookingId(booking.getBookingId());
         bookingWrapper.setSenderName(booking.getSenderName());
+        bookingWrapper.setSenderAddress(booking.getSenderAddress());
         bookingWrapper.setSenderMobileNumber(booking.getSenderMobileNumber());
         bookingWrapper.setSenderEmailId(booking.getSenderEmailId());
         bookingWrapper.setSenderCityName(booking.getSenderCityName());
@@ -44,15 +47,16 @@ public class BookingWrapper {
         bookingWrapper.setBookingDate(booking.getBookingDate());
 
         bookingWrapper.setReceiverName(booking.getReceiverName());
+        bookingWrapper.setReceiverAddress(booking.getReceiverAddress());
         bookingWrapper.setReceiverMobileNumber(booking.getReceiverMobileNumber());
         bookingWrapper.setReceiverEmailId(booking.getReceiverEmailId());
         bookingWrapper.setReceiverCityName(booking.getReceiverCityName());
         bookingWrapper.setReceiverPinCode(booking.getReceiverPinCode());
         bookingWrapper.setStatus(booking.getStatus());
         bookingWrapper.setPriority(booking.getPriority());
-        bookingWrapper.setType(booking.getType());
+        /*bookingWrapper.setType(booking.getType());
         bookingWrapper.setCategory(booking.getCategory());
-
+*/
         return bookingWrapper;
 
     }
@@ -75,8 +79,8 @@ public class BookingWrapper {
         booking.setReceiverCityName(bookingWrapper.getReceiverCityName());
         booking.setStatus(bookingWrapper.getStatus());
         booking.setPriority(bookingWrapper.getPriority());
-        booking.setType(bookingWrapper.getType());
-        booking.setCategory(bookingWrapper.getCategory());
+        /*booking.setType(bookingWrapper.getType());
+        booking.setCategory(bookingWrapper.getCategory());*/
 
         return booking;
     }
