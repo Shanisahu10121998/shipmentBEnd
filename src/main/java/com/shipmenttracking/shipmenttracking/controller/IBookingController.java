@@ -19,6 +19,7 @@ public interface IBookingController
     @PutMapping(value = "editShipment",consumes = "application/json")
     public Booking editShipment(@RequestBody Booking booking );
     @GetMapping(value = "/getTracking")
+
     public Booking getBookingInformationByTrackingId(String trackingId);
     @GetMapping(value = "/getAllBookingInfo")
     public List<BookingWrapper> getAllBookingInfo();

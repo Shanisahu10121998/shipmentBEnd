@@ -1,5 +1,8 @@
 package com.shipmenttracking.shipmenttracking.exception;
 
+import lombok.ToString;
+
+@ToString
 public class ExceptionResponse {
 
     private String errorMessage;

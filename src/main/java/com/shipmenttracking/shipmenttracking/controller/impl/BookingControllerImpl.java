@@ -31,7 +31,7 @@ public class BookingControllerImpl implements IBookingController {
     }
 
     @Override
-    public Booking getBookingInformationByTrackingId(String trackingId) {
+    public Booking  getBookingInformationByTrackingId(String trackingId) {
        try {
            return bookingService.getBookingInformationByTrackingId(trackingId);
        }catch (Exception ex){

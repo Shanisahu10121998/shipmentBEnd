@@ -24,22 +24,27 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public User userRegistration(User user) throws Exception{
-        log.info("inside method userRegistration : {}", user);
+        setUserRole(user);
+      try {
+           User user1=userDao.getUserByUsername(user.getUsername());
+
+           if(user1!=null){
+               throw new RuntimeException("user with " + user.getEmail() + " Email id already exist");
+           }
+            return userDao.userRegistration(user);
+        } catch (Exception ex) {
+            log.info("inside catch block", ex.getMessage());
+            throw new RuntimeException(ex.getMessage());
+        }
+
+    }
+
+    private void setUserRole(User user) {
+        log.info("inside method setUserRole : {}", user);
         Role role = new Role();
         role.setId(2);
         role.setRoleName("User");
         user.setRole(role);
-        try {
-           User user1=userDao.getUserByUsername(user.getUsername());
-           if(user1!=null){
-               throw new BusinessException("user with this mail already exist");
-           }
-            return userDao.userRegistration(user);
-        } catch (Exception e) {
-            log.error("inside catch block", e.getMessage());
-            throw new BusinessException(e.getMessage());
-        }
-
     }
 
     @Override

@@ -7,7 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 import com.shipmenttracking.shipmenttracking.model.User;
 import com.shipmenttracking.shipmenttracking.service.IUserService;
@@ -29,7 +28,7 @@ public class UserControllerImpl implements IUserController {
             return userService.userRegistration(user);
         }
         catch (Exception ex){
-            log.error("inside catch block",ex.getMessage());
+
             throw new Exception(ex.getMessage());
         }
     }
@@ -38,11 +37,6 @@ public class UserControllerImpl implements IUserController {
     public UserWrapper getProfile(Integer id) {
         return userService.getProfile(id);
     }
-    @ExceptionHandler(value = BusinessException.class)
-    public ResponseEntity<Object> exception(BusinessException exception) {
-        return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
-    }
-
 }
 
 
