@@ -14,7 +14,7 @@ public class UserDao {
         return userRepo.save(user);
     }
     public User getUserByUsername(String username){
-        return  userRepo.getUserByUsername(username);
+        return  userRepo.findByUserName(username);
     }
     public User getProfile(Integer id) {
         return userRepo.getById(id);

@@ -49,7 +49,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
 			} catch (ExpiredJwtException e) {
 				e.printStackTrace();
-            log.info("token expired "+e.getMessage());
+            log.info("jwt token has expired "+e.getMessage());
 			
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -60,11 +60,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 			log.info("Invalid token, not started with bearer string");
 
 		}
+		//validated
 		if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
 			final UserDetails userDetails = this.userDetailService.loadUserByUsername(username);
 
 			if (this.jwtUtil.validateToken(jwtToken, userDetails)) {
+				// token is valid
 
 				UsernamePasswordAuthenticationToken usernamePasswordAuthentication = new UsernamePasswordAuthenticationToken(
 						userDetails, null, userDetails.getAuthorities());

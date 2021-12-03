@@ -5,6 +5,8 @@ import com.shipmenttracking.shipmenttracking.service.impl.UserDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -31,11 +33,6 @@ public class AuthenticateController {
 	@Autowired
 	private UserDetailServiceImpl userDetailService;
 
-/*
-	@Autowired
-	private UserDto userDto;
-*/
-
 	@Autowired
 	private JwtUtils jwtUtils;
 
@@ -54,8 +51,9 @@ public class AuthenticateController {
 			authenticate(jwtRequest.getUsername(), jwtRequest.getPassword());
 		} catch (UsernameNotFoundException e) {
 			log.error("error occurred generateToken", e.getMessage());
-			throw new UsernameNotFoundException("not found");
+			throw new Exception("User not found");
 		}
+		///////Authenticate
 		String token = this.jwtUtils.generateToken(userDetails);
 
 		return ResponseEntity.ok(new JwtResponse(token));
@@ -68,14 +66,16 @@ public class AuthenticateController {
 	 * @param username the username to search
 	 * @param password the password to search
 	 */
-	private void authenticate(String username, String password) {
+	private void authenticate(String username, String password) throws Exception {
 		log.info("@class {} @method name {}", "AuthenticateController", "authenticate");
 		try {
 
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-		} catch (BusinessException e) {
+		} catch (DisabledException e) {
 			log.error("error occurrsed authenticate", e.getMessage());
-			throw new BusinessException("User Disabled");
+			throw new DisabledException("User Disabled "+e.getMessage());
+		}catch (BadCredentialsException e){
+			throw new Exception("Invalid Credentials "+e.getMessage());
 		}
 	}
 
@@ -86,16 +86,5 @@ public class AuthenticateController {
 	 * @return
 	 * @throws Exception
 	 */
-	/*@GetMapping("/getCurrentUser")
-	public UserDto getCurrentUser(Principal principal) throws Exception{
-		log.info("@class {} @method name {}", "AuthenticateController", "getCurrentUser");
-		try {
-			User user = (User) this.userDetailService.loadUserByUsername(principal.getName());
-			return userDto.convertUserModelToDto(user);
-		} catch (BussinessException e) {
-			log.error("error occured getCurrentUser", e.getMessage());
-			throw new BussinessException("No User Found");
-		}
-		
-	}*/
+
 }

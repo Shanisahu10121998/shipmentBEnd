@@ -1,5 +1,6 @@
 package com.shipmenttracking.shipmenttracking.service.impl;
 
+import com.shipmenttracking.shipmenttracking.model.User;
 import com.shipmenttracking.shipmenttracking.repo.IUserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,10 +22,10 @@ public class UserDetailServiceImpl implements UserDetailsService{
 		
 		log.info("inside @class UserDetailServiceImpl @method  loadUserByUsername username : {}",username);
 		
-		UserDetails user = (UserDetails)this.userRepository.getUserByUsername(username);
+		User user = this.userRepository.findByUserName(username);
 		
 		if(user == null) {
-			throw new UsernameNotFoundException("No user found");
+			throw new UsernameNotFoundException("No user found !! ");
 		}
 		
 		return user;

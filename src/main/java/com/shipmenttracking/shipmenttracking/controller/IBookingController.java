@@ -1,14 +1,12 @@
 package com.shipmenttracking.shipmenttracking.controller;
 
 import com.shipmenttracking.shipmenttracking.model.Booking;
-import com.shipmenttracking.shipmenttracking.repo.IBookingRepo;
+
 import com.shipmenttracking.shipmenttracking.wrapper.BookingWrapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
-import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
+
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+
 import java.util.List;
 
 @RequestMapping("/booking")
