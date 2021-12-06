@@ -4,6 +4,8 @@ import com.shipmenttracking.shipmenttracking.model.Booking;
 
 import com.shipmenttracking.shipmenttracking.wrapper.BookingWrapper;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -17,16 +19,14 @@ public interface IBookingController
     @PutMapping(value = "editShipment",consumes = "application/json")
     public Booking editShipment(@RequestBody Booking booking );
     @GetMapping(value = "/getTracking")
-
-    public Booking getBookingInformationByTrackingId(String trackingId);
+    @ApiOperation(value = "Finds Booking Information By Tracking Id",
+            notes = "Provide a tracking id to look up specific booking details",
+            response = Booking.class)
+    public Booking getBookingInformationByTrackingId(@ApiParam(value = "Tracking Id value for the booking details you need to retrieve",
+    readOnly = true) @PathVariable String trackingId);
     @GetMapping(value = "/getAllBookingInfo")
     public List<BookingWrapper> getAllBookingInfo();
     @DeleteMapping("/delete")
-    public void deleteBookingById(Integer bookingId);
+    public void deleteBookingById(@PathVariable Integer bookingId);
 
-    /*@Autowired
-    public IBookingRepo bookingRepo = null;
-    @RequestMapping(value = "/data/users", method = RequestMethod.GET)
-    public DataTablesOutput<Booking> getUsers(@Valid DataTablesInput input);
-*/
 }

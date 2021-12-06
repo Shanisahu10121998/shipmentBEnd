@@ -1,7 +1,6 @@
 package com.shipmenttracking.shipmenttracking.wrapper;
 
 import com.shipmenttracking.shipmenttracking.model.Booking;
-import com.shipmenttracking.shipmenttracking.model.User;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 

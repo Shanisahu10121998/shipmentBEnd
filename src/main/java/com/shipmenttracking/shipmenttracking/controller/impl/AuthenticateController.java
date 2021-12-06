@@ -72,7 +72,7 @@ public class AuthenticateController {
 
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 		} catch (DisabledException e) {
-			log.error("error occurrsed authenticate", e.getMessage());
+			log.error("error occurred authenticate", e.getMessage());
 			throw new DisabledException("User Disabled "+e.getMessage());
 		}catch (BadCredentialsException e){
 			throw new Exception("Invalid Credentials "+e.getMessage());

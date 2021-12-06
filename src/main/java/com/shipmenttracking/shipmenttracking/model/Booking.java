@@ -53,9 +53,9 @@ public class Booking
     //sender
     @Column(name = "sender_name",nullable = false)
     private String senderName;
-    @Column(name="sender_address",nullable = true)
+    @Column(name="sender_address",nullable = false)
     private String senderAddress;
-    @Column(name = "sender_mobile_number",length = 15)
+    @Column(name = "sender_mobile_number",length = 15,nullable = false)
     private String senderMobileNumber;
     @Column(name = "sender_email_id",nullable = false)
     private String senderEmailId;
@@ -67,7 +67,7 @@ public class Booking
     //receiver
     @Column(name = "receiver_name",nullable = false)
     private String receiverName;
-    @Column(name="receiver_address",nullable = true)
+    @Column(name="receiver_address",nullable = false)
     private String receiverAddress;
     @Column(name = "receiver_mobile_number",nullable = false,length = 15)
     private String receiverMobileNumber;
@@ -79,10 +79,10 @@ public class Booking
     private int receiverPinCode;
 
     //@Enumerated(EnumType.ORDINAL)
-    @Column(name = "status",nullable = true)
+    @Column(name = "status",nullable = false)
     private String Status;
    // @Enumerated(EnumType.ORDINAL)
-    @Column(name = "priority",nullable = true)
+    @Column(name = "priority",nullable = false)
     private String Priority;
    // @Enumerated(EnumType.ORDINAL)
 
