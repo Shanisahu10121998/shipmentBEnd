@@ -5,13 +5,13 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
 import com.shipmenttracking.shipmenttracking.model.Booking;
 
-@Repository
-/*
-@EnableJpaRepositories(repositoryFactoryBeanClass = DataTablesRepositoryFactoryBean.class)
-*/
+import java.util.List;
 
+@Repository
 public interface IBookingRepo extends JpaRepository<Booking,Integer> {
 
     @Query("SELECT b FROM Booking  b where b.trackingId = ?1")
     public Booking checkTrackingId(String trackingId);
+    @Query("SELECT b FROM Booking  b where b.user.email = ?1")
+    public List<Booking> getAllBookingInfoByUserName(String userName);
 }

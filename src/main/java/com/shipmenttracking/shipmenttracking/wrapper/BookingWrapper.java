@@ -1,11 +1,8 @@
 package com.shipmenttracking.shipmenttracking.wrapper;
-
 import com.shipmenttracking.shipmenttracking.model.Booking;
 import lombok.Data;
 import org.springframework.stereotype.Component;
-
 import java.util.Date;
-
 @Component
 @Data
 public class BookingWrapper {

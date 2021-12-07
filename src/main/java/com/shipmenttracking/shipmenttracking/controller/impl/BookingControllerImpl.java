@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.shipmenttracking.shipmenttracking.model.Booking;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.security.Principal;
 import java.util.List;
 
 @Slf4j
@@ -20,8 +21,8 @@ public class BookingControllerImpl implements IBookingController {
     private IBookingService bookingService;
 
     @Override
-    public BookingWrapper createBooking(BookingWrapper bookingWrapper) {
-        return bookingService.createBooking(bookingWrapper);
+    public BookingWrapper createBooking(BookingWrapper bookingWrapper, Principal principal) {
+        return bookingService.createBooking(bookingWrapper,principal);
     }
 
     @Override
@@ -39,12 +40,7 @@ public class BookingControllerImpl implements IBookingController {
 
            throw new BusinessException(ex.getMessage());
        }
-
-
-
-
     }
-
     @Override
     public List<BookingWrapper> getAllBookingInfo() {
         return bookingService.getAllBookingInfo();
@@ -54,4 +50,11 @@ public class BookingControllerImpl implements IBookingController {
     public void deleteBookingById(Integer bookingId) {
         bookingService.deleteBookingById(bookingId);
     }
+
+    @Override
+    public List<BookingWrapper> getAllBookingInfoByUserName(Principal principal) {
+        return bookingService.getAllBookingInfoByUserName(principal);
+    }
+
+
 }

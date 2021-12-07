@@ -58,7 +58,7 @@ public class User implements UserDetails {
     private String email;
     @Column(name = "address",nullable = false)
     private String address;
-    @Column(name = "password",nullable = false,length = 40)
+    @Column(name = "password",nullable = false,length = 250)
     private String password;
 
     @ManyToOne(cascade = {CascadeType.MERGE},fetch= FetchType.EAGER)

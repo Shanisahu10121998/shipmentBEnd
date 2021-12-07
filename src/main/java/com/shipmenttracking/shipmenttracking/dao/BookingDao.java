@@ -30,6 +30,9 @@ public class BookingDao {
     public List<Booking> getAllBookingInfo(){
         return bookingRepo.findAll();
     }
+    public List<Booking> getAllBookingInfoByUserName(String userName){
+        return bookingRepo.getAllBookingInfoByUserName(userName);
+    }
     public void deleteBookingById(Integer id){
         bookingRepo.deleteById(id);
     }
