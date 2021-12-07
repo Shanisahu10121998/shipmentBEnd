@@ -4,12 +4,12 @@ import com.shipmenttracking.shipmenttracking.wrapper.UserWrapper;
 import org.springframework.web.bind.annotation.*;
 import com.shipmenttracking.shipmenttracking.model.User;
 
-@RequestMapping("/registration")
+@RequestMapping("/user")
 public interface IUserController {
 
     @PostMapping(value = "/register",consumes = "application/json")
     public User userRegistration(@RequestBody User user) throws Exception;
-    @GetMapping("/getProfile")
+    @GetMapping("/getProfile/{id}")
     public UserWrapper getProfile(@PathVariable Integer id);
 
 }

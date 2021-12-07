@@ -44,6 +44,7 @@ public class BookingWrapper {
         bookingWrapper.setUserInstruction(booking.getUserInstruction());
         bookingWrapper.setTrackingId(booking.getTrackingId());
         bookingWrapper.setBookingDate(booking.getBookingDate());
+        bookingWrapper.setSenderAddress(booking.getSenderAddress());
 
         bookingWrapper.setReceiverName(booking.getReceiverName());
         bookingWrapper.setReceiverAddress(booking.getReceiverAddress());
@@ -53,6 +54,7 @@ public class BookingWrapper {
         bookingWrapper.setReceiverPinCode(booking.getReceiverPinCode());
         bookingWrapper.setStatus(booking.getStatus());
         bookingWrapper.setPriority(booking.getPriority());
+        bookingWrapper.setReceiverAddress(booking.getReceiverAddress());
         /*bookingWrapper.setType(booking.getType());
         bookingWrapper.setCategory(booking.getCategory());
 */
@@ -70,6 +72,7 @@ public class BookingWrapper {
         booking.setUserInstruction(bookingWrapper.getUserInstruction());
         booking.setTrackingId(bookingWrapper.getTrackingId());
         booking.setBookingDate(bookingWrapper.bookingDate);
+        booking.setSenderAddress(bookingWrapper.getSenderAddress());
 
         booking.setReceiverName(bookingWrapper.getReceiverName());
         booking.setReceiverMobileNumber(bookingWrapper.getReceiverMobileNumber());
@@ -78,6 +81,7 @@ public class BookingWrapper {
         booking.setReceiverCityName(bookingWrapper.getReceiverCityName());
         booking.setStatus(bookingWrapper.getStatus());
         booking.setPriority(bookingWrapper.getPriority());
+        booking.setReceiverAddress(bookingWrapper.getReceiverAddress());
         /*booking.setType(bookingWrapper.getType());
         booking.setCategory(bookingWrapper.getCategory());*/
 

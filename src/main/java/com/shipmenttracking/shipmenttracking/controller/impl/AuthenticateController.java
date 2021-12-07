@@ -43,7 +43,7 @@ public class AuthenticateController {
 	 * @return token 
 	 * @throws Exception
 	 */
-	@PostMapping("/generate-token")
+	@PostMapping("/user/login")
 	public ResponseEntity<?> generateToken(@RequestBody JwtRequest jwtRequest) throws Exception {
 		log.info("@class {} @method name {}", "AuthenticateController", "generateToken");
 		UserDetails userDetails = this.userDetailService.loadUserByUsername(jwtRequest.getUsername());

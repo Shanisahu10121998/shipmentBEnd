@@ -44,6 +44,9 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter{
 	public PasswordEncoder passwordEncoder() {
 		return NoOpPasswordEncoder.getInstance();
 	}
+	/*public BCryptPasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}*/
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -61,7 +64,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter{
 			.cors()
 			.disable()
 			.authorizeRequests()
-			.antMatchers("/generate-token","/registration/register","swagger-ui.html","/v2/api-docs").permitAll()
+			.antMatchers("/user/login","/user/register","/swagger-ui.html","/v2/api-docs").permitAll()
 			.antMatchers(HttpMethod.OPTIONS).permitAll()
 			.anyRequest().authenticated()
 			.and()
