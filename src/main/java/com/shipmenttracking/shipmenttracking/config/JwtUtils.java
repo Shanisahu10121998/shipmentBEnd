@@ -15,21 +15,6 @@ import java.util.function.Function;
 public class JwtUtils {
 
     private String SECRET_KEY = "shipment";
-    private int jwtExpirationInMs;
-    private int refreshExpirationDateInMs;
-
-
-
-    @Value("${jwt.expirationDateInMs}")
-    public void setJwtExpirationInMs(int jwtExpirationInMs) {
-        this.jwtExpirationInMs = jwtExpirationInMs;
-    }
-
-    @org.springframework.beans.factory.annotation.Value("${jwt.refreshExpirationDateInMs}")
-    public void setRefreshExpirationDateInMs(int refreshExpirationDateInMs) {
-        this.refreshExpirationDateInMs = refreshExpirationDateInMs;
-    }
-
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -68,13 +53,4 @@ public class JwtUtils {
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
-
-
-    private String doGenerateToken(Map<String, Object> claims, String subject) {
-
-        return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + jwtExpirationInMs))
-                .signWith(SignatureAlgorithm.HS512, SECRET_KEY).compact();
-
-    }
 }

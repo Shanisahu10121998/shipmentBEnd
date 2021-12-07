@@ -5,6 +5,7 @@ import com.shipmenttracking.shipmenttracking.wrapper.UserWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.RestController;
 import com.shipmenttracking.shipmenttracking.model.User;
 import com.shipmenttracking.shipmenttracking.service.IUserService;
@@ -17,11 +18,14 @@ public class UserControllerImpl implements IUserController {
     @Autowired
     private IUserService userService;
 
+    @Autowired private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public User userRegistration(User user) throws Exception {
         log.info("inside method userRegistration ");
         try{
+            //for password encoding
+           user.setPassword(bCryptPasswordEncoder. encode(user.getPassword()));
             return userService.userRegistration(user);
         }
         catch (Exception ex){
