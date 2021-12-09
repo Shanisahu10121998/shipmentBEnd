@@ -1,8 +1,13 @@
 package com.shipmenttracking.shipmenttracking.model;
+
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
+
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "BOOKING")
@@ -33,11 +38,18 @@ public class Booking
     private Date bookingDate;
     @Column(name = "tracking_id")
     private String trackingId;
+    @Column(name = "status_comment",nullable = true)
+    private String statusComment;
     @Column(name = "user_instruction",nullable = true)
     private String userInstruction;
-    @ManyToOne(cascade= CascadeType.PERSIST)
+
+    @ManyToOne(cascade= CascadeType.ALL)
     @JoinColumn(name = "USer_id_fk")
     private User user;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "booking_id_fk")
+    private List<ShipmentPackage> shipmentPackage;
+
     //sender
     @Column(name = "sender_name",nullable = false)
     private String senderName;
@@ -51,6 +63,7 @@ public class Booking
     private String senderCityName;
     @Column(name = "sender_pin_code",nullable = false)
     private int senderPinCode;
+
     //receiver
     @Column(name = "receiver_name",nullable = false)
     private String receiverName;
@@ -64,13 +77,16 @@ public class Booking
     private String receiverCityName;
     @Column(name = "receiver_pin_code",nullable = false)
     private int receiverPinCode;
+
+    //@Enumerated(EnumType.ORDINAL)
     @Column(name = "status",nullable = false)
     private String Status;
-
+   // @Enumerated(EnumType.ORDINAL)
     @Column(name = "priority",nullable = false)
     private String Priority;
-    @Column(name = "type",nullable = false)
-    private String Type;
-    @Column(name = "category",nullable = false)
-    private String Category;
+   // @Enumerated(EnumType.ORDINAL)
+
+
+
+
 }

@@ -6,8 +6,11 @@ import com.shipmenttracking.shipmenttracking.service.IBookingService;
 import com.shipmenttracking.shipmenttracking.wrapper.BookingWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RestController;
 import com.shipmenttracking.shipmenttracking.model.Booking;
+import org.springframework.web.server.ResponseStatusException;
+
 import java.security.Principal;
 import java.util.List;
 
@@ -52,4 +55,6 @@ public class BookingControllerImpl implements IBookingController {
     public List<BookingWrapper> getAllBookingInfoByUserName(Principal principal) {
         return bookingService.getAllBookingInfoByUserName(principal);
     }
+
+
 }

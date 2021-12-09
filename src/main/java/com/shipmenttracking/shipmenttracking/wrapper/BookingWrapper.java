@@ -52,9 +52,9 @@ public class BookingWrapper {
         bookingWrapper.setStatus(booking.getStatus());
         bookingWrapper.setPriority(booking.getPriority());
         bookingWrapper.setReceiverAddress(booking.getReceiverAddress());
-        bookingWrapper.setType(booking.getType());
+        /*bookingWrapper.setType(booking.getType());
         bookingWrapper.setCategory(booking.getCategory());
-
+*/
         return bookingWrapper;
 
     }
@@ -79,8 +79,8 @@ public class BookingWrapper {
         booking.setStatus(bookingWrapper.getStatus());
         booking.setPriority(bookingWrapper.getPriority());
         booking.setReceiverAddress(bookingWrapper.getReceiverAddress());
-        booking.setType(bookingWrapper.getType());
-        booking.setCategory(bookingWrapper.getCategory());
+        /*booking.setType(bookingWrapper.getType());
+        booking.setCategory(bookingWrapper.getCategory());*/
 
         return booking;
     }
