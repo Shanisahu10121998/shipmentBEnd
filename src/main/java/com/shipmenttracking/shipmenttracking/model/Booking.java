@@ -43,12 +43,9 @@ public class Booking
     @Column(name = "user_instruction",nullable = true)
     private String userInstruction;
 
-    @ManyToOne(cascade= CascadeType.ALL)
+    @ManyToOne(cascade= CascadeType.PERSIST)
     @JoinColumn(name = "USer_id_fk")
     private User user;
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "booking_id_fk")
-    private List<ShipmentPackage> shipmentPackage;
 
     //sender
     @Column(name = "sender_name",nullable = false)

@@ -37,6 +37,4 @@ public class BookingDao {
         bookingRepo.deleteById(id);
     }
 
-
-
 }

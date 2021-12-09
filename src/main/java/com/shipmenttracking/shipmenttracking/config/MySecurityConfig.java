@@ -64,7 +64,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter{
 			.cors()
 			.disable()
 			.authorizeRequests()
-			.antMatchers("/user/login","/user/register","/swagger-ui.html","/v2/api-docs").permitAll()
+			.antMatchers("/user/login","/booking/getTracking","/user/register","/v2/api-docs").permitAll()
 			.antMatchers(HttpMethod.OPTIONS).permitAll()
 			.anyRequest().authenticated()
 			.and()
@@ -74,6 +74,4 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter{
 		
 		http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 	}
-	
-
 }

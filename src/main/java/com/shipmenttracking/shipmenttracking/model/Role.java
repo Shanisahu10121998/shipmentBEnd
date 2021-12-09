@@ -12,7 +12,7 @@ import javax.persistence.Id;
 public class Role {
     @GeneratedValue
     @Id
-    private int id;
+    private int roleId;
 
     private String roleName;
 }

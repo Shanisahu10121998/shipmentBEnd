@@ -48,8 +48,8 @@ public class BookingServiceImpl implements IBookingService {
         booking1.setReceiverCityName(booking.getReceiverCityName());
         booking1.setReceiverEmailId(booking.getReceiverEmailId());
         booking1.setReceiverName(booking.getReceiverName());
+        booking1.setSenderName(booking.getSenderName());
         booking1.setReceiverMobileNumber(booking.getReceiverMobileNumber());
-
 
         return bookingDao.createBooking(booking1);
     }
@@ -94,6 +94,14 @@ public class BookingServiceImpl implements IBookingService {
             return  bookingWrapperObj.convertModelToWrapper(booking);
         }).collect(Collectors.toList());
         return bookingWrappers;
+    }
+
+    @Override
+    public Booking editStatus(int bookingId, Booking.Status status) {
+        Booking booking = bookingDao.getBookingById(bookingId);
+        booking.setStatus(status.toString());
+        return bookingDao.createBooking(booking);
+
     }
 
     private String generateUniqueId(){

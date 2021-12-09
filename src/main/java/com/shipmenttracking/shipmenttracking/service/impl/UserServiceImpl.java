@@ -42,7 +42,7 @@ public class UserServiceImpl implements IUserService {
     private void setUserRole(User user) {
         log.info("inside method setUserRole : {}", user);
         Role role = new Role();
-        role.setId(2);
+        role.setRoleId(2);
         role.setRoleName("User");
         user.setRole(role);
     }

@@ -12,4 +12,5 @@ public interface IBookingService {
     public List<BookingWrapper> getAllBookingInfo();
     public void deleteBookingById(Integer id);
     public List<BookingWrapper> getAllBookingInfoByUserName(Principal principal);
+    public Booking editStatus(int bookingId, Booking.Status status);
 }
