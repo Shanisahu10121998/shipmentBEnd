@@ -16,7 +16,7 @@ public class UserWrapper {
     private String address;
     public UserWrapper convertModelToWrapper(User user){
         UserWrapper userWrapper = new UserWrapper();
-        userWrapper.setId(user.getId());
+        userWrapper.setId(user.getUserId());
         userWrapper.setLastName(user.getLastName());
         userWrapper.setFirstName(user.getFirstName());
         userWrapper.setContactNumber(user.getContactNumber());

@@ -1,13 +1,9 @@
 package com.shipmenttracking.shipmenttracking.model;
-
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
 import java.util.Collection;
-
-
 @Data
 @Entity
 @Table(name="USER")
@@ -44,10 +40,10 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @Column(name = "user_id")
+    private int userId;
     @Column(name = "first_name",length = 100,nullable = false)
     private String firstName;
     @Column(name = "last_name",length = 100,nullable = false)
@@ -60,12 +56,7 @@ public class User implements UserDetails {
     private String address;
     @Column(name = "password",nullable = false,length = 250)
     private String password;
-
     @ManyToOne(cascade = {CascadeType.MERGE},fetch= FetchType.EAGER)
-    @JoinColumn(name = "role_id_fd")
+    @JoinColumn(name = "role_id_fk")
     private Role role;
-
-
-
-
 }
