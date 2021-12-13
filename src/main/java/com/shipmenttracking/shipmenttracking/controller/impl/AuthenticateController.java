@@ -52,6 +52,7 @@ public class AuthenticateController {
 		User user = this.userDetailService.loadUserByUsername(jwtRequest.getUsername());
 		System.out.println("In authenticate Controller"+user.getRole().getRoleName());
 		String roleName=user.getRole().getRoleName();
+		int userId=user.getUserId();
 
 		try {
 			authenticate(jwtRequest.getUsername(), jwtRequest.getPassword());
@@ -63,7 +64,7 @@ public class AuthenticateController {
 		String token = this.jwtUtils.generateToken(user);
 
 
-		return ResponseEntity.ok(new JwtResponse(token,roleName));
+		return ResponseEntity.ok(new JwtResponse(token,roleName,userId));
 
 	}
 
