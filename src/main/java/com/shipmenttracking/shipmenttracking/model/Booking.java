@@ -16,7 +16,7 @@ public class Booking
 
     public enum Status
     {
-        BOOKED, SHIPMENT,DELIVERED
+        BOOKED, DISPATCHED,OUT,DELIVERED
     }
     public enum Priority
     {

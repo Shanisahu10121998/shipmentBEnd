@@ -33,7 +33,6 @@ public class BookingServiceImpl implements IBookingService {
     public BookingWrapper createBooking(BookingWrapper bookingWrapper, Principal principal) {
         bookingWrapper.setStatus(String.valueOf(Booking.Status.BOOKED));
         String trackingId = null;
-        trackingId  ="trackingId";
         trackingId = isTrackingIdPresent(trackingId);
         bookingWrapper.setTrackingId(trackingId);
         Booking booking = bookingWrapperObj.convertWrapperToModel(bookingWrapper);
@@ -112,7 +111,7 @@ public class BookingServiceImpl implements IBookingService {
     private String isTrackingIdPresent(String trackingId){
         String isTracking = trackingId;
         Booking booking1 = bookingDao.checkTrackingId(trackingId);
-        if(booking1==null){
+        if(booking1==null && trackingId!=null){
             return isTracking;
         }
         else{
