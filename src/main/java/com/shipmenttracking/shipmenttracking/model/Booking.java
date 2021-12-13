@@ -70,7 +70,6 @@ public class Booking
     private String receiverCityName;
     @Column(name = "receiver_pin_code",nullable = false)
     private int receiverPinCode;
-    
     @Column(name = "status",nullable = false)
     private String Status;
     @Column(name = "priority",nullable = false)
