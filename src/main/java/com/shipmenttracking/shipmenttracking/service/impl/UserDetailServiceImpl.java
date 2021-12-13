@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 
+import javax.swing.plaf.synth.SynthTextAreaUI;
+
 @Slf4j
 @Service
 public class UserDetailServiceImpl implements UserDetailsService{
@@ -18,11 +20,12 @@ public class UserDetailServiceImpl implements UserDetailsService{
 	private IUserRepo userRepository;
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	public User loadUserByUsername(String username) throws UsernameNotFoundException {
 		
 		log.info("inside @class UserDetailServiceImpl @method  loadUserByUsername username : {}",username);
 		
 		User user = this.userRepository.findByUserName(username);
+		System.out.println("In User Details ServiceIMPL"+user.getRole());
 		
 		if(user == null) {
 			throw new UsernameNotFoundException("No user found !! ");

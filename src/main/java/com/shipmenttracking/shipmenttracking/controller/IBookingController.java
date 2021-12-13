@@ -24,12 +24,13 @@ public interface IBookingController
     @ApiOperation(value = "Finds Booking Information By Tracking Id", notes = "Provide a tracking id to look up specific booking details", response = Booking.class)
     public Booking getBookingInformationByTrackingId(@ApiParam(value = "Tracking Id value for the booking details you need to retrieve", readOnly = true)  String trackingId);
     @GetMapping(value = "/getAllBookingInfo")
-    public List<BookingWrapper> getAllBookingInfo();
+    public List<BookingWrapper> getAllBookingInfo();// Admin call
     @DeleteMapping("/delete/{bookingId}")
     public void deleteBookingById(@PathVariable Integer bookingId);
     @GetMapping(value = "/getAllBookingByUser")
-    public List<BookingWrapper> getAllBookingInfoByUserName(Principal principal);
+    public List<BookingWrapper> getAllBookingInfoByUserName(Principal principal);// User call
     @PostMapping(value = "/editStatus")
     public Booking editStatus(@RequestParam int bookingId,@RequestParam String status );
+
 
 }

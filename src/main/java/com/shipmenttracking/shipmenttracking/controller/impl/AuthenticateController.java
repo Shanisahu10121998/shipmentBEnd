@@ -1,7 +1,9 @@
 package com.shipmenttracking.shipmenttracking.controller.impl;
 
 import com.shipmenttracking.shipmenttracking.exception.BusinessException;
+import com.shipmenttracking.shipmenttracking.model.User;
 import com.shipmenttracking.shipmenttracking.service.impl.UserDetailServiceImpl;
+import com.shipmenttracking.shipmenttracking.wrapper.UserWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -46,7 +48,11 @@ public class AuthenticateController {
 	@PostMapping("/user/login")
 	public ResponseEntity<?> generateToken(@RequestBody JwtRequest jwtRequest) throws Exception {
 		log.info("@class {} @method name {}", "AuthenticateController", "generateToken");
-		UserDetails userDetails = this.userDetailService.loadUserByUsername(jwtRequest.getUsername());
+
+		User user = this.userDetailService.loadUserByUsername(jwtRequest.getUsername());
+		System.out.println("In authenticate Controller"+user.getRole().getRoleName());
+		String roleName=user.getRole().getRoleName();
+
 		try {
 			authenticate(jwtRequest.getUsername(), jwtRequest.getPassword());
 		} catch (UsernameNotFoundException e) {
@@ -54,9 +60,10 @@ public class AuthenticateController {
 			throw new Exception("User not found");
 		}
 		///////Authenticate
-		String token = this.jwtUtils.generateToken(userDetails);
+		String token = this.jwtUtils.generateToken(user);
 
-		return ResponseEntity.ok(new JwtResponse(token));
+
+		return ResponseEntity.ok(new JwtResponse(token,roleName));
 
 	}
 
