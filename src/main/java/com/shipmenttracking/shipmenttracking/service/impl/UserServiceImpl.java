@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import com.shipmenttracking.shipmenttracking.model.User;
 import com.shipmenttracking.shipmenttracking.service.IUserService;
 
+import java.security.Principal;
+
 @Service
 @Slf4j
 public class UserServiceImpl implements IUserService {
@@ -48,8 +50,8 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public UserWrapper getProfile(Integer id) {
-        User user = userDao.getProfile(id);
+    public UserWrapper getProfile(Principal principal) {
+        User user = userDao.getUserByUsername(principal.getName());
         UserWrapper userWrapperObj = userWrapper.convertModelToWrapper(user);
         return userWrapperObj;
     }

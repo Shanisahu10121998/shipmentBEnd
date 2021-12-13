@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.shipmenttracking.shipmenttracking.model.User;
 import com.shipmenttracking.shipmenttracking.service.IUserService;
 
+import java.security.Principal;
+
 
 @Slf4j
 @RestController
@@ -35,8 +37,8 @@ public class UserControllerImpl implements IUserController {
     }
 
     @Override
-    public UserWrapper getProfile(Integer id) {
-        return userService.getProfile(id);
+    public UserWrapper getProfile(Principal principal) {
+        return userService.getProfile(principal);
     }
 }
 
