@@ -22,10 +22,6 @@ public class Booking
     {
         LOW, MID, HIGH, URGENT
     }
-
-    enum Type{
-        BUSINESS,PERSONAL;
-    }
     enum Category{
         ELECTRONICS,MEDICAL, HOUSEHOLD,DOCUMENT,VEHICLE,LARGE_CARGO;
     }
@@ -74,14 +70,14 @@ public class Booking
     private String receiverCityName;
     @Column(name = "receiver_pin_code",nullable = false)
     private int receiverPinCode;
-
-    //@Enumerated(EnumType.ORDINAL)
+    
     @Column(name = "status",nullable = false)
     private String Status;
-   // @Enumerated(EnumType.ORDINAL)
     @Column(name = "priority",nullable = false)
     private String Priority;
-   // @Enumerated(EnumType.ORDINAL)
+    @Column(name = "category",nullable = false)
+    private String Category;
+
 
 
 
