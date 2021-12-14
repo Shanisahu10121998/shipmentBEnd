@@ -11,9 +11,8 @@ public class JwtResponse {
 	public JwtResponse(String token,String roleName,int userId){
 		this.token=token;
 		this.roleName=roleName;
-this.userId=userId;
+		this.userId=userId;
 	}
-
 	public JwtResponse(){
 
 	}
