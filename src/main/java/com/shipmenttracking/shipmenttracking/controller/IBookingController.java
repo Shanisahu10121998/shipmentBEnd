@@ -2,6 +2,7 @@ package com.shipmenttracking.shipmenttracking.controller;
 
 import com.shipmenttracking.shipmenttracking.model.Booking;
 
+import com.shipmenttracking.shipmenttracking.service.IBookingService;
 import com.shipmenttracking.shipmenttracking.wrapper.BookingWrapper;
 
 import io.swagger.annotations.ApiOperation;

@@ -25,7 +25,6 @@ public class BookingWrapper {
     private String Status;
     private String Priority;
     private String trackingId;
-    private String Type;
     private String Category;
 
 

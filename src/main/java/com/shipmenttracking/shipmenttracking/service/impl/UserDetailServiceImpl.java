@@ -25,7 +25,7 @@ public class UserDetailServiceImpl implements UserDetailsService{
 		log.info("inside @class UserDetailServiceImpl @method  loadUserByUsername username : {}",username);
 		
 		User user = this.userRepository.findByUserName(username);
-		System.out.println("In User Details ServiceIMPL"+user.getRole());
+		//System.out.println("In User Details ServiceIMPL"+user.getRole());
 		
 		if(user == null) {
 			throw new UsernameNotFoundException("No user found !! ");
