@@ -7,6 +7,6 @@ import java.security.Principal;
 
 public interface IUserService {
 
-    public User userRegistration(User user) throws Exception;
+    public UserWrapper userRegistration(User user) throws Exception;
     public UserWrapper getProfile(Principal principal) ;
 }

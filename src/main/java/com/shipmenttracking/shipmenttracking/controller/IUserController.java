@@ -10,7 +10,7 @@ import java.security.Principal;
 public interface IUserController {
 
     @PostMapping(value = "/register",consumes = "application/json")
-    public User userRegistration(@RequestBody User user) throws Exception;
+    public UserWrapper userRegistration(@RequestBody User user) throws Exception;
     @GetMapping("/getProfile")
     public UserWrapper getProfile(Principal principal);
 

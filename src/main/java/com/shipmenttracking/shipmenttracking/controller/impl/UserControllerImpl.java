@@ -23,7 +23,7 @@ public class UserControllerImpl implements IUserController {
     @Autowired private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
-    public User userRegistration(User user) throws Exception {
+    public UserWrapper userRegistration(User user) throws Exception {
         log.info("inside method userRegistration ");
         try{
             //for password encoding

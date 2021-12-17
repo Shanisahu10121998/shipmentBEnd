@@ -8,7 +8,6 @@ import com.shipmenttracking.shipmenttracking.model.User;
 @Component
 public class UserWrapper {
 
-    private int id;
     private String firstName;
     private String lastName;
     private String contactNumber;
@@ -16,7 +15,7 @@ public class UserWrapper {
     private String address;
     public UserWrapper convertModelToWrapper(User user){
         UserWrapper userWrapper = new UserWrapper();
-        userWrapper.setId(user.getUserId());
+        //userWrapper.setId(user.getUserId());
         userWrapper.setLastName(user.getLastName());
         userWrapper.setFirstName(user.getFirstName());
         userWrapper.setContactNumber(user.getContactNumber());
