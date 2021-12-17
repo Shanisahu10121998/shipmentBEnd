@@ -1,12 +1,8 @@
 package com.shipmenttracking.shipmenttracking.model;
-
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
-
-
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Data
 @Entity
@@ -38,11 +34,9 @@ public class Booking
     private String statusComment;
     @Column(name = "user_instruction",nullable = true)
     private String userInstruction;
-
     @ManyToOne(cascade= CascadeType.PERSIST)
     @JoinColumn(name = "USer_id_fk")
     private User user;
-
     //sender
     @Column(name = "sender_name",nullable = false)
     private String senderName;
@@ -76,9 +70,4 @@ public class Booking
     private String Priority;
     @Column(name = "category",nullable = false)
     private String Category;
-
-
-
-
-
 }

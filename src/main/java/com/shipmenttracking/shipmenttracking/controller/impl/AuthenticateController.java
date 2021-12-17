@@ -1,27 +1,20 @@
 package com.shipmenttracking.shipmenttracking.controller.impl;
-
-import com.shipmenttracking.shipmenttracking.exception.BusinessException;
 import com.shipmenttracking.shipmenttracking.model.User;
 import com.shipmenttracking.shipmenttracking.service.impl.UserDetailServiceImpl;
-import com.shipmenttracking.shipmenttracking.wrapper.UserWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.shipmenttracking.shipmenttracking.config.JwtUtils;
-
 import com.shipmenttracking.shipmenttracking.model.JwtRequest;
 import com.shipmenttracking.shipmenttracking.model.JwtResponse;
-
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -86,13 +79,5 @@ public class AuthenticateController {
 			throw new Exception("Invalid Credentials "+e.getMessage());
 		}
 	}
-
-	/**
-	 * this method search current logged in user
-	 * 
-	 * @param principal the Principal object
-	 * @return
-	 * @throws Exception
-	 */
 
 }

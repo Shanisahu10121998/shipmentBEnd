@@ -1,5 +1,4 @@
 package com.shipmenttracking.shipmenttracking.exception;
-
 import lombok.ToString;
 
 @ToString

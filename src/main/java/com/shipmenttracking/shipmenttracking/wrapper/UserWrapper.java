@@ -1,5 +1,4 @@
 package com.shipmenttracking.shipmenttracking.wrapper;
-
 import lombok.Data;
 import org.springframework.stereotype.Component;
 import com.shipmenttracking.shipmenttracking.model.User;
@@ -15,7 +14,6 @@ public class UserWrapper {
     private String address;
     public UserWrapper convertModelToWrapper(User user){
         UserWrapper userWrapper = new UserWrapper();
-        //userWrapper.setId(user.getUserId());
         userWrapper.setLastName(user.getLastName());
         userWrapper.setFirstName(user.getFirstName());
         userWrapper.setContactNumber(user.getContactNumber());

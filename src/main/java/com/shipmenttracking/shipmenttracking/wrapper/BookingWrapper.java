@@ -3,6 +3,7 @@ import com.shipmenttracking.shipmenttracking.model.Booking;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 import java.util.Date;
+
 @Component
 @Data
 public class BookingWrapper {
@@ -15,7 +16,6 @@ public class BookingWrapper {
     private int senderPinCode;
     private String userInstruction;
     private Date bookingDate;
-
     private String receiverName;
     private String receiverAddress;
     private String receiverMobileNumber;
@@ -26,7 +26,6 @@ public class BookingWrapper {
     private String Priority;
     private String trackingId;
     private String Category;
-
 
     public BookingWrapper convertModelToWrapper(Booking booking){
         BookingWrapper bookingWrapper = new BookingWrapper();
@@ -41,7 +40,6 @@ public class BookingWrapper {
         bookingWrapper.setTrackingId(booking.getTrackingId());
         bookingWrapper.setBookingDate(booking.getBookingDate());
         bookingWrapper.setSenderAddress(booking.getSenderAddress());
-
         bookingWrapper.setReceiverName(booking.getReceiverName());
         bookingWrapper.setReceiverAddress(booking.getReceiverAddress());
         bookingWrapper.setReceiverMobileNumber(booking.getReceiverMobileNumber());
@@ -67,7 +65,6 @@ public class BookingWrapper {
         booking.setTrackingId(bookingWrapper.getTrackingId());
         booking.setBookingDate(bookingWrapper.bookingDate);
         booking.setSenderAddress(bookingWrapper.getSenderAddress());
-
         booking.setReceiverName(bookingWrapper.getReceiverName());
         booking.setReceiverMobileNumber(bookingWrapper.getReceiverMobileNumber());
         booking.setReceiverEmailId(bookingWrapper.getReceiverEmailId());
@@ -77,11 +74,6 @@ public class BookingWrapper {
         booking.setPriority(bookingWrapper.getPriority());
         booking.setReceiverAddress(bookingWrapper.getReceiverAddress());
         booking.setCategory(bookingWrapper.getCategory());
-
         return booking;
     }
-
-
-
-
 }

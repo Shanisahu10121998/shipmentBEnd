@@ -1,7 +1,6 @@
 package com.shipmenttracking.shipmenttracking.service;
 import com.shipmenttracking.shipmenttracking.model.Booking;
 import com.shipmenttracking.shipmenttracking.wrapper.BookingWrapper;
-
 import java.security.Principal;
 import java.util.List;
 

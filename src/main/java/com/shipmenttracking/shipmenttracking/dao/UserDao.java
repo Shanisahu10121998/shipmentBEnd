@@ -1,8 +1,6 @@
 package com.shipmenttracking.shipmenttracking.dao;
-
 import com.shipmenttracking.shipmenttracking.model.User;
 import com.shipmenttracking.shipmenttracking.repo.IUserRepo;
-import com.shipmenttracking.shipmenttracking.wrapper.UserWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

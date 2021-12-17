@@ -13,7 +13,6 @@ public class User implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
-
         return null;
     }
 
@@ -60,8 +59,4 @@ public class User implements UserDetails {
     @ManyToOne(cascade = {CascadeType.MERGE},fetch= FetchType.EAGER)
     @JoinColumn(name = "role_id_fk")
     private Role role;
-
-
-
-
 }

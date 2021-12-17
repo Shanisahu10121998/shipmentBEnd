@@ -1,5 +1,4 @@
 package com.shipmenttracking.shipmenttracking.controller.impl;
-
 import com.shipmenttracking.shipmenttracking.controller.IBookingController;
 import com.shipmenttracking.shipmenttracking.exception.BusinessException;
 import com.shipmenttracking.shipmenttracking.service.IBookingService;
@@ -8,8 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import com.shipmenttracking.shipmenttracking.model.Booking;
-import org.springframework.web.server.ResponseStatusException;
-
 import java.security.Principal;
 import java.util.List;
 
@@ -54,13 +51,10 @@ public class BookingControllerImpl implements IBookingController {
     public List<BookingWrapper> getAllBookingInfoByUserName(Principal principal) {
         return bookingService.getAllBookingInfoByUserName(principal);
     }
-
     @Override
     public Booking editStatus(int bookingId, String status) {
         Booking.Status statusValue = Enum.valueOf(Booking.Status.class, status);
 
         return bookingService.editStatus(bookingId,statusValue);
     }
-
-
 }

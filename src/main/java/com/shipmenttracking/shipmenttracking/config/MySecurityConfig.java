@@ -53,7 +53,6 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter{
 		
 		auth.userDetailsService(this.userDetailServiceImpl).passwordEncoder(passwordEncoder());
 	}
-	
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {

@@ -1,10 +1,8 @@
 package com.shipmenttracking.shipmenttracking.repo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
 import com.shipmenttracking.shipmenttracking.model.Booking;
-
 import java.util.List;
 
 @Repository

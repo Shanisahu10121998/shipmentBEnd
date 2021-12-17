@@ -1,7 +1,5 @@
 package com.shipmenttracking.shipmenttracking.repo;
-
 import com.shipmenttracking.shipmenttracking.model.Role;
-import com.shipmenttracking.shipmenttracking.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

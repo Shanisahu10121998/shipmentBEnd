@@ -1,16 +1,9 @@
 package com.shipmenttracking.shipmenttracking.controller;
-
 import com.shipmenttracking.shipmenttracking.model.Booking;
-
-import com.shipmenttracking.shipmenttracking.service.IBookingService;
 import com.shipmenttracking.shipmenttracking.wrapper.BookingWrapper;
-
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.web.bind.annotation.*;
-
-
-import javax.websocket.server.PathParam;
 import java.security.Principal;
 import java.util.List;
 
@@ -22,8 +15,11 @@ public interface IBookingController
     @PutMapping(value = "/editShipment",consumes = "application/json")
     public Booking editShipment(@RequestBody Booking booking );
     @GetMapping(value = "/getTracking")
-    @ApiOperation(value = "Finds Booking Information By Tracking Id", notes = "Provide a tracking id to look up specific booking details", response = Booking.class)
-    public Booking getBookingInformationByTrackingId(@ApiParam(value = "Tracking Id value for the booking details you need to retrieve", readOnly = true)  String trackingId);
+    @ApiOperation(value = "Finds Booking Information By Tracking Id",
+            notes = "Provide a tracking id to look up specific booking details",
+            response = Booking.class)
+    public Booking getBookingInformationByTrackingId(@ApiParam(value = "Tracking Id value for the booking details you need to retrieve",
+            readOnly = true)  String trackingId);
     @GetMapping(value = "/getAllBookingInfo")
     public List<BookingWrapper> getAllBookingInfo();// Admin call
     @DeleteMapping("/delete/{bookingId}")

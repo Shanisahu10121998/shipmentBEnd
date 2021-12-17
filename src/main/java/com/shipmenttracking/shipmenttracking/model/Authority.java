@@ -1,5 +1,4 @@
 package com.shipmenttracking.shipmenttracking.model;
-
 import org.springframework.security.core.GrantedAuthority;
 
 public class Authority implements GrantedAuthority{
@@ -10,8 +9,6 @@ public class Authority implements GrantedAuthority{
 		super();
 		this.authority = authority;
 	}
-
-
 
 	@Override
 	public String getAuthority() {

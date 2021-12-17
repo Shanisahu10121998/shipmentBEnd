@@ -1,11 +1,8 @@
 package com.shipmenttracking.shipmenttracking.dao;
-
 import com.shipmenttracking.shipmenttracking.model.Booking;
 import com.shipmenttracking.shipmenttracking.repo.IBookingRepo;
-import com.shipmenttracking.shipmenttracking.wrapper.BookingWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.util.List;
 
 @Component

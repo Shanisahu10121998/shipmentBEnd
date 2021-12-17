@@ -1,5 +1,4 @@
 package com.shipmenttracking.shipmenttracking.service.impl;
-
 import com.shipmenttracking.shipmenttracking.dao.UserDao;
 import com.shipmenttracking.shipmenttracking.model.Role;
 import com.shipmenttracking.shipmenttracking.wrapper.UserWrapper;
@@ -8,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.shipmenttracking.shipmenttracking.model.User;
 import com.shipmenttracking.shipmenttracking.service.IUserService;
-
 import java.security.Principal;
 
 @Service
